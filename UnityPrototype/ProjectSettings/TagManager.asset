@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Fish
+  - Enemy
+  - bullet
+  - Reflected
+  - Environment
+  - Wall
+  - End
   layers:
   - Default
   - TransparentFX
