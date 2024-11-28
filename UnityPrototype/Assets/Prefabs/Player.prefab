@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.001
-  rotationSpeed: 1
+  rotationSpeed: 4
   timeSinceStart: 0
   timeSinceLastCall: 0
   startingBearing: 0

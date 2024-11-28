@@ -53,9 +53,10 @@ public class MicroBitListen : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-motion[3], motion[5]-startingBearing - 90, -motion[4]), rotationSpeed * timeSinceLastCall);
 
             //transform.position += new Vector3(motion[0] * speed * timeSinceLastCall,0,-motion[1] * speed * timeSinceLastCall);
-
+            /*
             Vector3 displacement = new Vector3(motion[0] * Mathf.Pow(timeSinceLastCall, 2) / 2 * speed, 0, -motion[1]* Mathf.Pow(timeSinceLastCall,2) / 2* speed);
             transform.position += displacement;
+            */
         }
     }
     // Called on connect/disconnect events

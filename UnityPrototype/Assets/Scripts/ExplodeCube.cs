@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ExplodeCube : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ExplodeCube : MonoBehaviour
     [SerializeField] GameObject cubeDeathGameObject;
     //[SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip deathAudio;
+    public ScoreController scoreCounter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,12 @@ public class ExplodeCube : MonoBehaviour
     {
 
         AudioSource.PlayClipAtPoint(deathAudio, this.gameObject.transform.position);
+        if (scoreCounter != null)
+        {
+            scoreCounter.IncreaseScore(500);
+        }
+
+        print("INCREASE SCORE");
 
         for (int x = 0; x < cubesPerAxis; x++)
         {
