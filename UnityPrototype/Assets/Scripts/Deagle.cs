@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,8 @@ public class Deagle : MonoBehaviour
     [SerializeField] GameObject muzzleflash;
 
     [SerializeField] GameObject bulletTrail;
+    
+    [SerializeField] TextMeshProUGUI ammoCounter;
     bool hasPressed;
     [SerializeField] float gunRange;
 
@@ -25,6 +28,7 @@ public class Deagle : MonoBehaviour
     void Start()
     {
         bulletsLeft = bulletsMax;
+        SetAmmoCount();
     }
 
     // Update is called once per frame
@@ -61,7 +65,8 @@ public class Deagle : MonoBehaviour
     {
         bulletsLeft = bulletsMax;
         PlayAudioClip(reloadSFX);
-
+        SetAmmoCount();
+        ammoCounter.color = Color.white;
     }
 
     public void fire()
@@ -69,6 +74,7 @@ public class Deagle : MonoBehaviour
         if (bulletsLeft > 0)
         {
             bulletsLeft--;
+            SetAmmoCount();
             PlayAudioClip(fireSFX);
             muzzleflash.GetComponent<ParticleSystem>().Play();
             RaycastHit hit;
@@ -97,7 +103,10 @@ public class Deagle : MonoBehaviour
         }
         else
         {
+            
             PlayAudioClip(emptyFireSFX);
+            SetAmmoCount();
+            ammoCounter.color = Color.red;
         }
     }
 
@@ -116,6 +125,14 @@ public class Deagle : MonoBehaviour
         lineRenderer.SetPosition(0, Vector3.zero);
         lineRenderer.SetPosition(1, hitPos);
         Destroy(bulletTrailEffect, 1f);
+    }
+
+    void SetAmmoCount()
+    {
+        if (ammoCounter != null)
+        {
+            ammoCounter.SetText(bulletsLeft + "/" + bulletsMax);
+        }
     }
 }
 
